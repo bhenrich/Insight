@@ -8,13 +8,6 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-try:
-    import pyperclip
-    CLIPBOARD_AVAILABLE = True
-except ImportError:
-    CLIPBOARD_AVAILABLE = False
-    print("Module 'pyperclip' not installed. Clipboard copy functionality disabled.")
-
 # ANSI color codes for terminal output
 COLOR_RESET = "\033[0m"
 COLOR_RED = "\033[31m"
@@ -35,6 +28,13 @@ ICON_CHECK = "\uF00C"  # nf-fa-check
 ICON_ERROR = "\uF00D"  # nf-fa-times_circle
 ICON_VIDEO = "\uF03D"  # nf-fa-video_camera
 ICON_CLIPBOARD = "\uF0EA" # nf-fa-clipboard
+
+try:
+    import pyperclip
+    CLIPBOARD_AVAILABLE = True
+except ImportError:
+    CLIPBOARD_AVAILABLE = False
+    print(f"{COLOR_RED}{ICON_ERROR} Module 'pyperclip' not installed. Clipboard copy functionality disabled.{COLOR_RESET}")
 
 # Global title variable to store video title
 title = ""

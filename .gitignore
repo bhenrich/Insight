@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -170,8 +169,3 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
-=======
-/venv
-venv
-venv/*
->>>>>>> c028561 (init)

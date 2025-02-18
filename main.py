@@ -35,8 +35,7 @@ ICON_CLIPBOARD = "\uF0EA" # nf-fa-clipboard
 
 # Global title variable to store video title
 title = ""
-api_key = "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"  # Set your OpenAI API key here
-client = OpenAI(api_key=api_key)  # Initialize OpenAI client
+client = OpenAI(os.getenv("OPENAI_API_KEY"))
 
 def get_video_info(url):
     """

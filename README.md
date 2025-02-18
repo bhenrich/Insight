@@ -9,11 +9,11 @@ Whether you need a quick overview in a few sentences or a structured breakdown i
 ## Features
 
   * **Multiple Summary Modes:**
-      * **Standart Mode (Default):** Generates a summary in a few concise sentences, ideal for a quick overview.
+      * **standard Mode (Default):** Generates a summary in a few concise sentences, ideal for a quick overview.
       * **Bulletpoint Mode:** Provides a summary in markdown-formatted bullet points, perfect for structured and easily digestible information.
   * **Configurable Output:**
       * **Language Selection:** Specify the caption language using the `--lang` or `-l` tag.
-      * **Mode Selection:** Choose between `standart` and `bulletpoint` modes using the `--mode` or `-m` tag.
+      * **Mode Selection:** Choose between `standard` and `bulletpoint` modes using the `--mode` or `-m` tag.
   * **Clipboard Integration:** Automatically copy the generated summary to your clipboard with the `--copy` or `-c` flag for seamless use in notes or documents.
   * **Formatted Terminal Output:** Enjoy a clean and readable summary directly in your terminal, enhanced with colors, icons, and structured formatting.
   * **Modular Prompt System:** Easily extensible architecture for adding new summary modes in the future.
@@ -44,7 +44,7 @@ Whether you need a quick overview in a few sentences or a structured breakdown i
 
 Run `insight` (or `your_script_name.py` if you haven't renamed it) from your terminal with a YouTube video URL as the argument.
 
-**Basic Usage (Standart Mode, English Captions):**
+**Basic Usage (standard Mode, English Captions):**
 
 ```bash
 python your_script_name.py <YouTube_Video_URL>
@@ -65,7 +65,7 @@ python your_script_name.py https://www.youtube.com/watch?v=dQw4w9WgXcQ
     python your_script_name.py -l es <YouTube_Video_URL>
     ```
 
-  * **`--mode <mode>`, `-m <mode>`:** Choose the summary output mode. Available modes: `standart`, `bulletpoint`. Defaults to `standart`.
+  * **`--mode <mode>`, `-m <mode>`:** Choose the summary output mode. Available modes: `standard`, `bulletpoint`. Defaults to `standard`.
 
     ```bash
     python your_script_name.py --mode bulletpoint <YouTube_Video_URL>

@@ -134,16 +134,16 @@ def fetch_gpt3_response(prompt, max_tokens=4069):
     except Exception as e:
         return f"{COLOR_RED}{ICON_ERROR} Error fetching GPT-3 response: {e}{COLOR_RESET}"
 
-def generate_standart_prompt(video_title, filtered_captions):
+def generate_standard_prompt(video_title, filtered_captions):
     """
-    Generates the prompt for 'standart' mode.
+    Generates the prompt for 'standard' mode.
 
     Args:
         video_title (str): Title of the YouTube video.
         filtered_captions (str): Filtered captions text.
 
     Returns:
-        str: The prompt for standart summary mode.
+        str: The prompt for standard summary mode.
     """
     return (
         f"Please summarize the following video script in a few sentences. The name of the YouTube Video is {video_title}. "
@@ -175,15 +175,36 @@ def generate_bulletpoint_prompt(video_title, filtered_captions):
         "Don't leave out any facts in the video. Simply lay out the explained information in bullet points for easy digestion and markdown formatting. "
         f"Here is the related video script:\n\n{filtered_captions}\n\nSummary in bullet points and markdown syntax:"
     )
+    
+def generate_keytakeaway_prompt(video_title, filtered_captions):
+    """
+    Generates the prompt for 'keytakeaway' mode.
 
-def get_video_summary(video_url, video_lang="en", mode="standart", copy_to_clipboard=False):
+    Args:
+        video_title (str): Title of the YouTube video.
+        filtered_captions (str): Filtered captions text.
+
+    Returns:
+        str: The prompt for eytakeaway summary mode.
+    """
+    return (
+        f"Please filter out the key takeaways from the following video script. The name of the YouTube Video is {video_title}. "
+        "Filter out only the information and do not include any possible sponsored segments. "
+        "ABSOLUTELY NEVER use phrases like 'the video explains', or 'the script argues', or 'the video discusses', "
+        "instead just focus on the raw information, as if you were asked to explain the topic to someone without sounding like you learnt it in a YouTube video. "
+        "Lastly again, completely ignore anything that seems like a sponsorship or a sponsored segment, or anything where someone directly talks about a product. "
+        "Don't leave out any facts in the video. Simply summarize the key takeaways from the information explained in the video."
+        f"Here is the related video script:\n\n{filtered_captions}\n\nKey Takeaways:"
+    )
+
+def get_video_summary(video_url, video_lang="en", mode="standard", copy_to_clipboard=False):
     """
     Orchestrates the video summary process.
 
     Args:
         video_url (str): URL of the YouTube video.
         video_lang (str, optional): Language code for captions (default: 'en').
-        mode (str, optional): Summary output mode ('standart' or 'bulletpoint', default: 'standart').
+        mode (str, optional): Summary output mode ('standard' or 'bulletpoint', default: 'standard').
         copy_to_clipboard (bool, optional): Automatically copy summary to clipboard (default: False).
 
     Returns:
@@ -210,13 +231,15 @@ def get_video_summary(video_url, video_lang="en", mode="standart", copy_to_clipb
     print(f"{COLOR_YELLOW}{ICON_FILTER} Filtering Captions...{COLOR_RESET}")
     filtered_captions = filter_captions(captions)
 
-    if mode == "standart":
-        prompt = generate_standart_prompt(title, filtered_captions)
+    if mode == "standard":
+        prompt = generate_standard_prompt(title, filtered_captions)
     elif mode == "bulletpoint":
         prompt = generate_bulletpoint_prompt(title, filtered_captions)
+    elif mode == "keytakeaways":
+        prompt = generate_keytakeaway_prompt(title, filtered_captions)
     else:
-        print(f"{COLOR_RED}{ICON_ERROR} Unknown mode selected: {mode}. Falling back to standart mode.{COLOR_RESET}")
-        prompt = generate_standart_prompt(title, filtered_captions)
+        print(f"{COLOR_RED}{ICON_ERROR} Unknown mode selected: {mode}. Falling back to standard mode.{COLOR_RESET}")
+        prompt = generate_standard_prompt(title, filtered_captions)
 
     print(f"{COLOR_MAGENTA}{ICON_OPENAI} Fetching OpenAI Response...{COLOR_RESET}")
     response = fetch_gpt3_response(prompt)
@@ -254,7 +277,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Summarize a YouTube video.")
     parser.add_argument("video_url", help="The URL of the YouTube video.")
     parser.add_argument("--lang", default="en", help="The language of the captions (default: en).")
-    parser.add_argument("--mode", "-m", default="standart", choices=["standart", "bulletpoint"], help="Output mode (standart or bulletpoint).")
+    parser.add_argument("--mode", "-m", default="standard", choices=["standard", "bulletpoint", "keytakeaways"], help="Output mode (standard or bulletpoint).")
     parser.add_argument("--copy", "-c", action="store_true", default=False, help="Automatically copy the summary to clipboard.") # Added copy argument
     args = parser.parse_args()
 

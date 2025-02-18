@@ -1,4 +1,4 @@
-![INSIGHT Logo](./ASSETS/INSIGHT_Logo.png)
+<img src="./ASSETS/INSIGHT_Logo.png" alt="INSIGHT Logo" width="200"/>
 
 ## Description
 

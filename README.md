@@ -65,7 +65,7 @@ python your_script_name.py https://www.youtube.com/watch?v=dQw4w9WgXcQ
     python your_script_name.py -l es <YouTube_Video_URL>
     ```
 
-  * **`--mode <mode>`, `-m <mode>`:** Choose the summary output mode. Available modes: `standard`, `bulletpoint`. Defaults to `standard`.
+  * **`--mode <mode>`, `-m <mode>`:** Choose the summary output mode. Available modes: `standard`, `bulletpoint`, `keytakeaways`. Defaults to `standard`.
 
     ```bash
     python your_script_name.py --mode bulletpoint <YouTube_Video_URL>

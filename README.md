@@ -53,7 +53,7 @@ python your_script_name.py <YouTube_Video_URL>
 **Example:**
 
 ```bash
-python your_script_name.py [https://www.youtube.com/watch?v=dQw4w9WgXcQ](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
+python your_script_name.py https://www.youtube.com/watch?v=dQw4w9WgXcQ
 ```
 
 **Options:**
@@ -105,4 +105,4 @@ python your_script_name.py --help
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](https://www.google.com/url?sa=E&source=gmail&q=LICENSE.md) file for details.
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.

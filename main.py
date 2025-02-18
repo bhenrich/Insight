@@ -4,6 +4,9 @@ import subprocess
 import json
 from youtube_transcript_api import YouTubeTranscriptApi
 from openai import OpenAI
+from dotenv import load_dotenv
+
+load_dotenv()
 
 try:
     import pyperclip
@@ -35,7 +38,7 @@ ICON_CLIPBOARD = "\uF0EA" # nf-fa-clipboard
 
 # Global title variable to store video title
 title = ""
-client = OpenAI(os.getenv("OPENAI_API_KEY"))
+client = OpenAI(api_key=os.environ.get('OPENAI_API_KEY'))
 
 def get_video_info(url):
     """
